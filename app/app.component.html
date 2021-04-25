@@ -1,0 +1,31 @@
+<div class="header">
+  <h1>Playlist</h1>
+</div>
+
+<div class="firstsec">
+  <img src="./album.jpg" alt="album-cover" height="10%" width="39%">
+  <div class="songs">
+    <ul class="playlist">
+      <li *ngFor="let file of files" (click)="openFile(file.url)">{{file.artist}} - {{file.name}}</li>
+    </ul>
+  </div>
+</div>
+
+<div class="secondsec">
+  <div class="manip">
+    <button type="button" class="btn btn-outline-dark" (click)="play()">Play</button>
+    <button type="button" class="btn btn-outline-dark" (click)="pause()">Pause</button>
+    <button type="button" class="btn btn-outline-dark" (click)="stop()">Stop</button>
+  </div>
+
+  <div class="timer">
+    <span>{{currentTime}}</span>
+    <input type="range" min="0" max="{{duration}}" [value]="seek" (input)="setSeekTo($event)">
+    <span>{{duration}}</span>
+  </div>
+
+  <div class="volume">
+    <span>Volume</span>
+    <input ng-model="value" type="range" min="0" max="1" step="0.01" value="0.5" (input)="setVolume($event)">
+  </div>
+</div>
